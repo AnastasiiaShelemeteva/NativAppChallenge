@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Challenge</string>
+    <string name="btnStart">Start</string>
+    <string name="btnLike">Like</string>
+    <string name="btnDislike">Dislike</string>
+    <string name="delimiter">/</string>
+    <string name="likes">0</string>
+    <string name="likeDislikeSum">0</string>
+    <string name="btnReview">See review</string>
+
+    <string name="endOfImages">You rated all images. Now you can see a review</string>
+</resources>
