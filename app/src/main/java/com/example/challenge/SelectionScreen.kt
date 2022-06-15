@@ -2,19 +2,18 @@ package com.example.challenge
 
 import Images
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import java.io.Serializable
-import java.util.*
 
 class SelectionScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selection_screen)
+
         val btnLike = findViewById<Button>(R.id.btnLike)
         val btnDislike = findViewById<Button>(R.id.btnDislike)
         val btnReview = findViewById<Button>(R.id.btnReview)
@@ -36,55 +35,64 @@ class SelectionScreen : AppCompatActivity() {
         }
         btnReview.isClickable = false
 
-
-
         btnLike.setOnClickListener {
             imgList[counter].isLiked = true
-            counter = countRates(true)
+            countRates(R.id.likeCounter)
+            counter = countRates(R.id.likeDislikeCounter)
             if (counter < imgList.size) {
                 changeImage(imgList[counter])
             } else {
-                btnReview.isClickable = true
-                btnDislike.isClickable = false
-                btnLike.isClickable = false
-                showMessage(getString(R.string.endOfImages), this)
+                modifyBtn(btnReview, true)
+                modifyBtn(btnDislike, false)
+                modifyBtn(btnLike, false)
+                showMessage(getString(R.string.endOfImages))
             }
         }
 
         btnDislike.setOnClickListener {
-            counter = countRates(false)
+            counter = countRates(R.id.likeDislikeCounter)
             if (counter < imgList.size) {
                 changeImage(imgList[counter])
             } else {
-                btnReview.isClickable = true
-                btnDislike.isClickable = false
-                btnLike.isClickable = false
-                showMessage(getString(R.string.endOfImages), this)
+                modifyBtn(btnReview, true)
+                modifyBtn(btnDislike, false)
+                modifyBtn(btnLike, false)
+                showMessage(getString(R.string.endOfImages))
             }
         }
    }
 
-    private fun countRates(isLike: Boolean): Int {
-        if (isLike) {
-            val likeCounterTextValue = findViewById<TextView>(R.id.likeCounter)
-            var likeCount = likeCounterTextValue.text.toString().toInt()
-            likeCount++
-            likeCounterTextValue.text = likeCount.toString()
+    private fun modifyBtn(btn: Button, isActive: Boolean){
+        if (isActive) {
+            btn.apply {
+                isClickable = true
+                setBackgroundColor(ContextCompat.getColor(context, R.color.blue))
+                setTextColor(ContextCompat.getColor(context, R.color.white))
+            }
+        } else {
+            btn.apply {
+                isClickable = false
+                setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
+                setTextColor(ContextCompat.getColor(context, R.color.white))
+            }
         }
 
-        val counterTextValue = findViewById<TextView>(R.id.likeDislikeCounter)
-        var count = counterTextValue.text.toString().toInt()
+    }
+
+    private fun countRates(textViewId: Int): Int {
+        val counterTextView = findViewById<TextView>(textViewId)
+        var count = counterTextView.text.toString().toInt()
         count++
-        counterTextValue.text = count.toString()
+        counterTextView.text = count.toString()
         return count
     }
 
     private fun changeImage(image: Images) {
-        var img = findViewById<ImageView>(R.id.imageView)
+        val img = findViewById<ImageView>(R.id.imageView)
         img.setImageResource(image.id)
     }
 
-    private fun showMessage(message: String, activity: SelectionScreen) {
-        Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+    private fun showMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

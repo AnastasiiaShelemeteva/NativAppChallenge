@@ -7,32 +7,6 @@
     tools:context=".SelectionScreen">
 
 
-    <Button
-        android:id="@+id/btnLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="300dp"
-        android:backgroundTint="@color/green"
-        android:text="@string/btnLike"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/likeCounter" />
-
-    <Button
-        android:id="@+id/btnDislike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="80dp"
-        android:backgroundTint="@color/red"
-        android:text="@string/btnDislike"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.805"
-        app:layout_constraintStart_toEndOf="@+id/btnLike"
-        app:layout_constraintTop_toBottomOf="@+id/likeDislikeCounter" />
-
     <TextView
         android:id="@+id/likeCounter"
         android:layout_width="wrap_content"
@@ -72,18 +46,49 @@
         android:id="@+id/btnReview"
         android:layout_width="123dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/grey"
         android:text="@string/btnReview"
-        android:backgroundTint="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delimiter"
-        app:layout_constraintVertical_bias="0.907" />
+        app:layout_constraintVertical_bias="0.833" />
+
+    <Button
+        android:id="@+id/btnLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/green"
+        android:text="@string/btnLike"
+        android:textColor="@color/violet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDislike"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/likeCounter"
+        app:layout_constraintVertical_bias="0.478" />
+
+    <Button
+        android:id="@+id/btnDislike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/pink"
+        android:text="@string/btnDislike"
+        android:textColor="@color/violet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnLike"
+        app:layout_constraintTop_toBottomOf="@+id/likeDislikeCounter"
+        app:layout_constraintVertical_bias="0.478" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="400dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

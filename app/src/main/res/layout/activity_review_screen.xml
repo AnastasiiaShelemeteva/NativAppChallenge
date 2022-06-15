@@ -8,32 +8,32 @@
     tools:context=".ReviewScreen">
 
 
+     <Button
+        android:id="@+id/btnTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/blue"
+        android:text="@string/Table"
+        app:layout_constraintEnd_toStartOf="@+id/btnGrid"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/btnGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:layout_marginStart="158dp"
         android:layout_weight="1"
-        android:backgroundTint="@color/orange"
-        android:text="Grid"
+        android:backgroundTint="@color/blue"
+        android:text="@string/Grid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnTable"
         app:layout_constraintTop_toTopOf="parent"
         tools:layview2out_editor_absoluteY="277dp" />
-
-    <Button
-        android:id="@+id/btnTable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:text="Table"
-        app:layout_constraintEnd_toStartOf="@+id/btnGrid"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/flFragment"
@@ -44,7 +44,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTable">
-
     </FrameLayout>
 
 

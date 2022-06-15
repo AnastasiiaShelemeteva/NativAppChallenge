@@ -8,10 +8,12 @@
 
     <Button
         android:id="@+id/startBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="73dp"
+        android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
+        android:textSize="20dp"
         android:text="@string/btnStart"
-        android:backgroundTint="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
