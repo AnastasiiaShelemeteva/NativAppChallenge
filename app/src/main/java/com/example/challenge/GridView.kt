@@ -2,13 +2,13 @@ package com.example.challenge
 
 import Images
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.*
-import android.widget.GridView
+import android.widget.Button
+import android.widget.GridLayout
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.core.view.setPadding
+import androidx.fragment.app.Fragment
 
 class GridView : Fragment(R.layout.fragment_gridview) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class GridView : Fragment(R.layout.fragment_gridview) {
             val image: Images = arguments?.get(i.toString()) as Images
             val (imageView, imageViewHeart) = createImageView(image)
             mainLayout.addView(imageView)
-            //mainLayout.addView(imageViewHeart)
+            mainLayout.addView(imageViewHeart)
         }
     }
 
@@ -35,13 +35,10 @@ class GridView : Fragment(R.layout.fragment_gridview) {
 
         val imageViewHeart = ImageView(activity)
         if (image.isLiked) {
-            imageViewHeart.setImageResource(R.mipmap.heartfull)
-        } else {
-            imageViewHeart.setImageResource(R.mipmap.heartempty)
+            imageViewHeart.setImageResource(android.R.drawable.star_big_on)
         }
         imageView.setPadding(100)
-        imageView.layoutParams.height = 300;
-        imageView.layoutParams.height = 150;
+       // imageView.layoutParams = GridLayout.LayoutParams()
         return Pair(imageView, imageViewHeart)
     }
 
