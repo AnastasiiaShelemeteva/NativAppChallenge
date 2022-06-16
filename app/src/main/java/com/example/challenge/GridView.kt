@@ -1,6 +1,7 @@
 package com.example.challenge
 
 import Images
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import android.widget.GridLayout
@@ -12,23 +13,25 @@ class GridView : Fragment(R.layout.fragment_gridview) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mainLayout = view.findViewById<GridLayout>(R.id.gridLayout)
-        for (i in 0..5)  {
-            val image: Images = arguments?.get(i.toString()) as Images
-            val (imageView, imageViewHeart) = createImageView(image)
+        val imgList = arguments?.get("imgList") as ArrayList<Images>
+        for (image in imgList)  {
+            val (imageView, imageViewLiked) = createImageView(image)
             mainLayout.addView(imageView)
-            mainLayout.addView(imageViewHeart)
+            mainLayout.addView(imageViewLiked)
         }
     }
 
 
     private fun createImageView(image: Images): Pair<ImageView, ImageView> {
         val imageView = ImageView(activity)
-        imageView.setImageResource(image.id)
+        val imgBody = activity?.assets?.open(image.name)
+        val dImgBody = Drawable.createFromStream(imgBody, null)
+        imageView.setImageDrawable(dImgBody)
         val imageViewLiked = ImageView(activity)
         if (image.isLiked) {
             imageViewLiked.setImageResource(android.R.drawable.star_big_on)
         }
-        imageView.setPadding(100)
+        //imageView.setPadding(100)
         return Pair(imageView, imageViewLiked)
     }
 

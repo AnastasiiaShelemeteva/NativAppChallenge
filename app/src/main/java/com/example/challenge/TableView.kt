@@ -14,9 +14,8 @@ class TableView : Fragment(R.layout.fragment_tableview) {
         super.onViewCreated(view, savedInstanceState)
         val mainLayout = view.findViewById<LinearLayout>(R.id.tableLayout)
 
-
-        for (i in 0..5)  {
-            val image: Images = arguments?.get(i.toString()) as Images
+        val imgList = arguments?.get("imgList") as ArrayList<Images>
+        for (image in imgList)  {
             val subLayout = createLinearLayout(image)
             mainLayout.addView(subLayout)
         }
@@ -24,7 +23,7 @@ class TableView : Fragment(R.layout.fragment_tableview) {
     private fun createLinearLayout(image: Images): LinearLayout {
         val subLayout = LinearLayout(activity)
         val tvFilename = TextView(activity)
-        tvFilename.text = image.id.toString()
+        tvFilename.text = image.name.split(".")[0]
         val textViewParam: LinearLayout.LayoutParams =
             LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         textViewParam.apply {
@@ -34,7 +33,6 @@ class TableView : Fragment(R.layout.fragment_tableview) {
             layoutParams = textViewParam;
             tvFilename.textSize = 20F
         }
-
         subLayout.addView(tvFilename)
         if (image.isLiked) {
             val tvIsLiked = TextView(activity)

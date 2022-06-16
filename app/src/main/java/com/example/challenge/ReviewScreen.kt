@@ -15,11 +15,9 @@ class ReviewScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review_screen)
 
-        val imgList: MutableList<Images> = intent.getSerializableExtra("imgList") as MutableList<Images>
+        val imgList = intent.getParcelableArrayListExtra<Images>("imgList")
         val bundle = Bundle()
-        for (i in imgList.indices) {
-            bundle.putSerializable(i.toString(), imgList[i])
-        }
+        bundle.putParcelableArrayList("imgList", imgList)
 
         val gridFragment = GridView()
         val tableFragment = TableView()

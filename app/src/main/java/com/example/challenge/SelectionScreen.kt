@@ -2,11 +2,14 @@ package com.example.challenge
 
 import Images
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import java.io.Serializable
+import java.util.*
+
 
 class SelectionScreen : AppCompatActivity() {
 
@@ -19,18 +22,12 @@ class SelectionScreen : AppCompatActivity() {
         val btnReview = findViewById<Button>(R.id.btnReview)
 
         var counter = 0
-        val imgList: List<Images> = listOf(
-            Images(R.mipmap.img1),
-            Images(R.mipmap.img2),
-            Images(R.mipmap.img3),
-            Images(R.mipmap.a1),
-            Images(R.mipmap.awddf),
-            Images(R.mipmap.eegfg)
-        )
+        val imgList = collectImages()
+        loadImage(imgList[0])
 
         btnReview.setOnClickListener {
             val moveToReview: Intent = Intent(this, ReviewScreen::class.java)
-            moveToReview.putExtra("imgList", imgList as Serializable)
+            moveToReview.putExtra("imgList", imgList)
             startActivity(moveToReview)
         }
         btnReview.isClickable = false
@@ -40,7 +37,8 @@ class SelectionScreen : AppCompatActivity() {
             countRates(R.id.likeCounter)
             counter = countRates(R.id.likeDislikeCounter)
             if (counter < imgList.size) {
-                changeImage(imgList[counter])
+                loadImage(imgList[counter])
+                collectImages()
             } else {
                 modifyBtn(btnReview, true)
                 modifyBtn(btnDislike, false)
@@ -52,7 +50,7 @@ class SelectionScreen : AppCompatActivity() {
         btnDislike.setOnClickListener {
             counter = countRates(R.id.likeDislikeCounter)
             if (counter < imgList.size) {
-                changeImage(imgList[counter])
+                loadImage(imgList[counter])
             } else {
                 modifyBtn(btnReview, true)
                 modifyBtn(btnDislike, false)
@@ -87,12 +85,28 @@ class SelectionScreen : AppCompatActivity() {
         return count
     }
 
-    private fun changeImage(image: Images) {
+    private fun loadImage(image: Images) {
         val img = findViewById<ImageView>(R.id.imageView)
-        img.setImageResource(image.id)
+        val imgBody = assets.open(image.name)
+        val dImgBody = Drawable.createFromStream(imgBody, null)
+        img.setImageDrawable(dImgBody)
     }
 
     private fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
+
+    private fun collectImages(): ArrayList<Images> {
+        var images: ArrayList<Images> = arrayListOf()
+        val listImages = assets.list("")
+        if (listImages != null) {
+           for (img in listImages) {
+               if ("." in img) {
+                   images.add(Images(img))
+               }
+           }
+        }
+        return images
+    }
 }
+
