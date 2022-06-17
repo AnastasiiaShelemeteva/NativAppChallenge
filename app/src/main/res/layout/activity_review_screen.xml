@@ -8,31 +8,29 @@
     tools:context=".ReviewScreen">
 
 
-     <Button
+    <Button
         android:id="@+id/btnTable"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginLeft="10dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:layout_weight="1"
         android:backgroundTint="@color/blue"
         android:text="@string/Table"
+        app:layout_constraintBottom_toTopOf="@+id/glBtnBottom"
         app:layout_constraintEnd_toStartOf="@+id/btnGrid"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/btnGrid"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginLeft="10dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="158dp"
         android:layout_weight="1"
         android:backgroundTint="@color/blue"
         android:text="@string/Grid"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/glBtnBottom"
         app:layout_constraintStart_toEndOf="@+id/btnTable"
-        app:layout_constraintTop_toTopOf="parent"
         tools:layview2out_editor_absoluteY="277dp" />
 
     <FrameLayout
@@ -43,8 +41,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTable">
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/btnTable"></FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glBtnBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

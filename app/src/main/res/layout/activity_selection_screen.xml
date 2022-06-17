@@ -11,90 +11,105 @@
         android:id="@+id/likeCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="@string/likes"
         android:textSize="50dp"
+        app:layout_constraintBaseline_toBottomOf="@+id/scoreBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.365"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/likeDislikeCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="@string/likeDislikeSum"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.61"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBottomOf="@+id/scoreBottom" />
 
     <TextView
         android:id="@+id/delimiter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="@string/delimiter"
         android:textSize="50dp"
+
         app:layout_constraintEnd_toStartOf="@+id/likeDislikeCounter"
         app:layout_constraintStart_toEndOf="@+id/likeCounter"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBottomOf="@+id/scoreBottom"/>
 
     <Button
         android:id="@+id/btnReview"
-        android:layout_width="123dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/grey"
         android:text="@string/btnReview"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delimiter"
-        app:layout_constraintVertical_bias="0.833" />
+        app:layout_constraintTop_toBottomOf="@id/btnLike" />
 
     <Button
         android:id="@+id/btnLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/green"
         android:text="@string/btnLike"
         android:textColor="@color/violet"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDislike"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/likeCounter"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBottom" />
 
     <Button
         android:id="@+id/btnDislike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
         android:backgroundTint="@color/pink"
+        android:layout_marginTop="10dp"
         android:text="@string/btnDislike"
         android:textColor="@color/violet"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnLike"
-        app:layout_constraintTop_toBottomOf="@+id/likeDislikeCounter"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBottom" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delimiter" />
+        app:layout_constraintBottom_toTopOf="@+id/imageViewBottom"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTop" />
 
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/scoreBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/imageViewTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/imageViewBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/scoreMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

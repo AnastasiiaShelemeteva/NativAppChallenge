@@ -7,6 +7,9 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 
 class TableView : Fragment(R.layout.fragment_tableview) {
@@ -16,24 +19,27 @@ class TableView : Fragment(R.layout.fragment_tableview) {
 
         val imgList = arguments?.get("imgList") as ArrayList<Images>
         for (image in imgList)  {
-            val subLayout = createLinearLayout(image)
-            mainLayout.addView(subLayout)
+            val subLinearLayout = createSubLinearLayout(image)
+            mainLayout.addView(subLinearLayout)
         }
     }
-    private fun createLinearLayout(image: Images): LinearLayout {
+    private fun createSubLinearLayout(image: Images): LinearLayout {
         val subLayout = LinearLayout(activity)
-        val tvFilename = TextView(activity)
-        tvFilename.text = image.name.split(".")[0]
+        val tvImageName = TextView(activity)
         val textViewParam: LinearLayout.LayoutParams =
             LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         textViewParam.apply {
-            setMargins(0, 15, 150, 10)
+            0.1
         }
-        tvFilename.apply {
-            layoutParams = textViewParam;
-            tvFilename.textSize = 20F
+        tvImageName.apply {
+            //layoutParams = textViewParam;
+            textSize = 20F
+            text = image.name.split(".")[0]
+            width = 500
+            layoutParams = textViewParam
         }
-        subLayout.addView(tvFilename)
+        subLayout.addView(tvImageName)
+
         if (image.isLiked) {
             val tvIsLiked = TextView(activity)
             tvIsLiked.apply {
@@ -41,7 +47,7 @@ class TableView : Fragment(R.layout.fragment_tableview) {
                 textSize = 20F
                 setTextColor(Color.parseColor("#F30B1E"))
             }
-            tvFilename.layoutParams = textViewParam
+
             subLayout.addView(tvIsLiked)
         }
         return subLayout
